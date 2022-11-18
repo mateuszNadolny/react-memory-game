@@ -1,3 +1,5 @@
 # react-memory-game
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-eus2tr)
+Simple memory game created with React.JS
+
+It was created in order to test the functionality of useReducer hook
