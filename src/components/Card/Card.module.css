@@ -1,0 +1,14 @@
+img {
+  width: 100px;
+  height: 100px;
+}
+
+img:hover {
+  opacity: 0.7;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

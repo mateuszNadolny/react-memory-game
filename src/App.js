@@ -1,32 +1,38 @@
-import React from 'react';
+import { useState } from 'react';
 
-import styles from './App.module.css';
+import Card from './components/Card/Card';
+
+import './index.css';
 
 const initialCards = [
-  {'color': '#fcd303' }
-  {'color': '#c93204' }
-  {'color': '#53c904' }
-  {'color': '#4cd4ad' }
-  {'color': '#26e7eb' }
-  {'color': '#eb26eb' }
-]
+  { src: '/assets/cat.png' },
+  { src: '/assets/dog.webp' },
+  { src: '/assets/duck.webp' },
+  { src: '/assets/kiwi.jpg' },
+  { src: '/assets/moose.jpg' },
+  { src: '/assets/squirrel.webp' }
+];
 
 export default function App() {
+  const [cards, setCards] = useState([]);
 
   //shuffle cards
   const shuffleCards = () => {
     const shuffledCards = [...initialCards, ...initialCards]
-    .sort(() => Math.random() - 0.5)
-    .map((card) => card = {...card, id: Math.random(), matched: false})
-
-    console.log(shuffledCards)
-  }
-
-  shuffleCards();
+      .sort(() => Math.random() - 0.5)
+      .map((card) => (card = { ...card, id: Math.random(), matched: false }));
+    setCards(shuffledCards);
+  };
 
   return (
-    <div>
+    <>
       <h1>React memory game</h1>
-    </div>
+      <div className="memory-grid">
+        {cards.map((card) => (
+          <Card key={card.id} card={card} />
+        ))}
+      </div>
+      <button onClick={shuffleCards}>Start game</button>
+    </>
   );
 }
