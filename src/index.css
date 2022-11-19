@@ -14,10 +14,12 @@ body {
 
 h1,
 button {
-  margin: 3rem;
+  margin: 1.5rem;
 }
 
 .memory-grid {
+  width: 50%;
+  margin: 1rem auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
