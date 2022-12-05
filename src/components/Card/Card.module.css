@@ -1,11 +1,11 @@
+* {
+  transition: ease-in 0.2s;
+}
+
 img {
   width: 100px;
   height: 100px;
   border-radius: 20px;
-}
-
-img:hover {
-  opacity: 0.7;
 }
 
 img:active {
@@ -22,6 +22,10 @@ img:active {
   width: 100px;
   height: 100px;
   border-radius: 20px;
-  background-color: white;
+  background-color: rgb(56, 218, 183);
   position: absolute;
+}
+
+.cover:hover {
+  background-color: rgb(164, 160, 229);
 }

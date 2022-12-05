@@ -17,11 +17,13 @@ export default function App() {
   const [cards, setCards] = useState([]);
   const [firstChoice, setFirstChoice] = useState(null);
   const [secondChoice, setSecondChoice] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   //reset turns
   const resetTurn = () => {
     setFirstChoice(null);
     setSecondChoice(null);
+    setDisabled(false);
   };
 
   //shuffle cards
@@ -41,6 +43,7 @@ export default function App() {
   //compare selected cards
   useEffect(() => {
     if (firstChoice && secondChoice) {
+      setDisabled(true);
       if (firstChoice.src === secondChoice.src && firstChoice.id !== secondChoice.id) {
         console.log('cards match');
         setCards((prevCards) => {
@@ -52,16 +55,17 @@ export default function App() {
             }
           });
         });
+        resetTurn();
       } else {
+        setTimeout(() => resetTurn(), 1000);
       }
-      resetTurn();
     }
   }, [firstChoice, secondChoice]);
 
   return (
     <>
       <h1>React memory game</h1>
-      <button onClick={shuffleCards}>Start game</button>
+      <button onClick={shuffleCards}>New game</button>
       <div className="memory-grid">
         {cards.map((card) => (
           <Card
@@ -69,6 +73,7 @@ export default function App() {
             key={card.id}
             card={card}
             flipped={card === firstChoice || card === secondChoice || card.matched}
+            disabled={disabled}
           />
         ))}
       </div>
