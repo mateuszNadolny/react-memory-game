@@ -11,9 +11,12 @@ const Card = ({ card, onChoice }) => {
   return (
     <div className={styles.card}>
       <img src={card.src} alt="memory image" onClick={handleChoice} />
-      <div className={styles.cover}></div>
     </div>
   );
 };
+
+{
+  /* <div className={card.flipped ? styles.coverFlipped : styles.cover} onClick={handleChoice}></div>; */
+}
 
 export default Card;

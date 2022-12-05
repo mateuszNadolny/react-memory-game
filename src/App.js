@@ -22,6 +22,7 @@ export default function App() {
   const resetTurn = () => {
     setFirstChoice(null);
     setSecondChoice(null);
+    console.log('RESET');
   };
 
   //shuffle cards
@@ -36,15 +37,27 @@ export default function App() {
   //handle choice
   const choiceHandler = (card) => {
     firstChoice ? setSecondChoice(card) : setFirstChoice(card);
+    console.log('choiceHandler fnction start');
+    console.log(card);
+    console.log('choiceHandler ends');
   };
 
   //compare selected cards
   useEffect(() => {
     if (firstChoice && secondChoice) {
-      if (firstChoice.src === secondChoice.src) {
-        console.log('those cards match');
-        resetTurn();
+      if (firstChoice.src === secondChoice.src && firstChoice.id !== secondChoice.id) {
+        setCards((prevCards) => {
+          return prevCards.map((card) => {
+            if (card.src === firstChoice.src) {
+              return { ...card, matched: true };
+            } else {
+              return card;
+            }
+          });
+        });
+      } else {
       }
+      resetTurn();
     }
   }, [firstChoice, secondChoice]);
 
@@ -54,7 +67,12 @@ export default function App() {
       <button onClick={shuffleCards}>Start game</button>
       <div className="memory-grid">
         {cards.map((card) => (
-          <Card onChoice={choiceHandler} key={card.id} card={card} />
+          <Card
+            onChoice={choiceHandler}
+            key={card.id}
+            card={card}
+            flipped={card === firstChoice || card === secondChoice || card.matched}
+          />
         ))}
       </div>
     </>

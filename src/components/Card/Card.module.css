@@ -1,7 +1,12 @@
-img {
+img,
+.cover {
   width: 100px;
   height: 100px;
   border-radius: 20px;
+}
+
+.coverFlipped {
+  display: none;
 }
 
 .cover {
@@ -17,11 +22,8 @@ img:active {
   transform: scale(0.95);
 }
 
-/* .card {
-    width: 100px;
-  height: 100px;
-  border-radius: 20px;
+.card {
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+}
