@@ -1,17 +1,7 @@
-img,
-.cover {
+img {
   width: 100px;
   height: 100px;
   border-radius: 20px;
-}
-
-.coverFlipped {
-  display: none;
-}
-
-.cover {
-  background-color: white;
-  position: absolute;
 }
 
 img:hover {
@@ -26,4 +16,12 @@ img:active {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.cover {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  background-color: white;
+  position: absolute;
 }

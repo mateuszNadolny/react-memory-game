@@ -22,7 +22,6 @@ export default function App() {
   const resetTurn = () => {
     setFirstChoice(null);
     setSecondChoice(null);
-    console.log('RESET');
   };
 
   //shuffle cards
@@ -37,15 +36,13 @@ export default function App() {
   //handle choice
   const choiceHandler = (card) => {
     firstChoice ? setSecondChoice(card) : setFirstChoice(card);
-    console.log('choiceHandler fnction start');
-    console.log(card);
-    console.log('choiceHandler ends');
   };
 
   //compare selected cards
   useEffect(() => {
     if (firstChoice && secondChoice) {
       if (firstChoice.src === secondChoice.src && firstChoice.id !== secondChoice.id) {
+        console.log('cards match');
         setCards((prevCards) => {
           return prevCards.map((card) => {
             if (card.src === firstChoice.src) {
